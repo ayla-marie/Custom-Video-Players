@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Video Player</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/progress.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+    <h1>Lessons</h1>
+    <h3>Introduction</h3>
+    <div class="week">
+        <div class="math">
+            <video src="videos/Nutcracker.mp4" class="video" poster="img/readingIcon.png">
+            </video>
+            <div class="controls">
+                <button class="btnPlay">
+                    <i class="fa fa-play fa-3x"></i>
+                </button>
+                <!-- <button class="btnPause" id="hidethis">
+                    <i class="fa fa-pause fa-2x"></i>
+                </button> -->
+                </button>
+                <button class="btnStop">
+                    <i class="fa fa-stop fa-3x"></i>
+                </button>
+                <input type="range" class="progress" min="0" max="100" step="0.1" value="0" />
+                <span class="timestamp">00:00</span>
+            </div>
+        </div>
+        <div class="reading">
+            <video src="videos/saypleaseBB.mp4" class="video" poster="img/mathIcon.png">
+            </video>
+            <div class="controls">
+                <button class="btnPlay">
+                    <i class="fa fa-play fa-3x" id="play"></i>
+                </button>
+                </button>
+                <button class="btnStop">
+                    <i class="fa fa-stop fa-3x"></i>
+                </button>
+                <input type="range" class="progress" min="0" max="100" step="0.1" value="0" />
+                <span class="timestamp">00:00</span>
+            </div>
+        </div>
+        <div class="science">
+            <video src="videos/TenSciExp.mp4" class="video" poster="img/scienceIcon.png">
+            </video>
+            <div class="controls">
+                <button class="btnPlay">
+                    <i class="fa fa-play fa-3x" id="play"></i>
+                </button>
+                <button class="btnStop">
+                    <i class="fa fa-stop fa-3x"></i>
+                </button>
+                <input type="range" class="progress" min="0" max="100" step="0.1" value="0" />
+                <span class="timestamp" type="number">00:00</span>
+            </div>
+        </div>
+        <div class="socialStudies">
+            <video src="videos/RESPECTL1.mp4" class="video" poster="img/socialIcon.png">
+            </video>
+            <div class="controls">
+                <button class="btnPlay">
+                    <i class="fa fa-play fa-3x" id="play"></i>
+                </button>
+                <button class="btnStop">
+                    <i class="fa fa-stop fa-3x"></i>
+                </button>
+                <input type="range" class="progress" min="0" max="100" step="0.1" value="0" />
+                <span class="timestamp">00:00</span>
+            </div>
+        </div>
+    </div>
+    <h3>Assignments</h3>
+
+    </div>
+
+    <h3>Turn in</h3>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
