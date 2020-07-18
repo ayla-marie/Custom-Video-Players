@@ -1,19 +1,23 @@
 import React from "react";
 import "./progress.css";
 import "../../App.css";
-import { FaPlay, FaStop, Fapause } from "react-icons/fa";
+import { FaPlay, Fapause } from "react-icons/fa";
+import { BsFullscreen } from "react-icons/bs";
 
 function Video() {
+  const fullScreen = () => {
+    return true;
+  };
+
   return (
-    <div>
-      <label for="vid"></label>
-      <iframe class="vid" src="" allowFullScreen="true" sandbox></iframe>
-      <div class="controls">
-        <button class="playButton">
+    <div className="masterVid">
+      <video className="vid" />
+      <div className="controls">
+        <button className="playButton">
           <FaPlay size={20} />
         </button>
-        <button class="stopButton">
-          <FaStop size={20} />
+        <button className="fsButton" onClick={fullScreen}>
+          <BsFullscreen size={20} />
         </button>
         <input
           type="range"
