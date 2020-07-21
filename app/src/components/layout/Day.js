@@ -12,27 +12,27 @@ const videoAtoZ = [
   {
     src: abcsong,
     title: "Alphabet"
-  },
-  {
-    src: art,
-    title: "Drawing-Shapes"
-  },
-  {
-    src: ask2play,
-    title: "Friendships"
-  },
-  {
-    src: nums123,
-    title: "Counting"
-  },
-  {
-    src: pledge,
-    title: "Pledge"
-  },
-  {
-    src: sciweather,
-    title: "Weather"
   }
+  // {
+  //   src: art,
+  //   title: "Drawing-Shapes"
+  // },
+  // {
+  //   src: ask2play,
+  //   title: "Friendships"
+  // },
+  // {
+  //   src: nums123,
+  //   title: "Counting"
+  // },
+  // {
+  //   src: pledge,
+  //   title: "Pledge"
+  // },
+  // {
+  //   src: sciweather,
+  //   title: "Weather"
+  // }
 ];
 
 const Day = () => {
