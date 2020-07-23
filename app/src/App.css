@@ -101,6 +101,12 @@ h1 {
   border-top-right-radius: 10px;
   width: 100%;
 }
+.full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
 ul {
   list-style-type: none;

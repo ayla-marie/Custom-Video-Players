@@ -2,11 +2,11 @@ import React from "react";
 import Video from "./Video";
 import "../../App.css";
 import abcsong from "./videos/abc-song.mp4";
-import art from "./videos/art.mp4";
-import ask2play from "./videos/askToPlay.mp4";
-import nums123 from "./videos/numbers-1-20.mp4";
-import pledge from "./videos/pledge.mp4";
-import sciweather from "./videos/science-weather.mp4";
+// import art from "./videos/art.mp4";
+// import ask2play from "./videos/askToPlay.mp4";
+// import nums123 from "./videos/numbers-1-20.mp4";
+// import pledge from "./videos/pledge.mp4";
+// import sciweather from "./videos/science-weather.mp4";
 
 const videoAtoZ = [
   {

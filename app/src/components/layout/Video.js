@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./progress.css";
 import "../../App.css";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { FaPlay, FaPause, FaExpand } from "react-icons/fa";
 
 function Video(props) {
   const { src, title } = props;
+  // const {min, setMin} = useState();
   const [playIt, setPlayIt] = useState();
-  const timestampRef = React.useRef();
+  const [size, changeSize] = useState();
   const divRef = React.useRef();
+  const progressRef = React.useRef();
+  const timestampRef = React.useRef();
 
-  //play on click
+  //play and pause on click
   if (playIt) {
     divRef.current.play();
     console.log("calling play");
@@ -19,54 +22,51 @@ function Video(props) {
     }
   }
 
-  // //progress: not working
-  // if (vidProgress) {
-  //   progressRef.vlue = (divRef.currentTime / divRef.duration) * 100;
-  //   let min = Math.floor(divRef.currentTime / 60);
-  //   if (min < 10) {
-  //     min = "0" + String(min);
-  //   }
-  //   let sec = Math.floor(divRef.currentTime % 60);
-  //   if (sec < 10) {
-  //     sec = "0" + String(sec);
-  //   }
-  //   timestampRef.innerText = `${min}: ${sec}`;
-  // }
+  //Fullscreen and ReduceScreen
+  if (size) {
+    console.log("toggle style");
+  }
+
+  useEffect(() => {
+    //updates the progressbar as % of videotime run
+    let thisVideo = divRef.current;
+    let thisProgress = progressRef.current;
+    const interval = setInterval(() => {
+      thisProgress.value = (thisVideo.currentTime / thisVideo.duration) * 100;
+    }, 1000);
+  });
 
   return (
     <div className="masterVid">
-      <p>{title}</p>
-      <video ref={divRef} src={src} className="vid" disablePictureInPicture />
+      <p val={title}></p>
+      <video ref={divRef} src={src} className="vid" allowFullScreen />
       <div className="controls">
-        <button
+        <FaPlay
           onClick={function() {
             setPlayIt(true);
           }}
           className="playButton"
-        >
-          <FaPlay size={20} />
-        </button>
-        <button
+          size={20}
+        />
+        <FaPause
+          size={20}
           className="pauseButton"
           onClick={() => {
             setPlayIt(false);
           }}
-        >
-          <FaPause size={20} />
-        </button>
+        />
+        <FaExpand size={20} className="fullScreen" onClick={changeSize} />
         <input
           type="range"
           className="progress"
+          ref={progressRef}
           min="0"
           max="100"
           step="0.1"
           value="0"
-          // onTimeUpdate={getVidProgress}
           readOnly
         />
-        <span ref={timestampRef} className="timestamp">
-          00:00
-        </span>
+        <span ref={timestampRef} className="timestamp"></span>
       </div>
     </div>
   );
