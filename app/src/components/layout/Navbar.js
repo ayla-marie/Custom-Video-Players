@@ -1,23 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../../App.css";
-import { FaHome, FaUserCircle, FaCalendarAlt, FaStamp } from "react-icons/fa";
+import { FaHome, FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Navbar = ({ title }) => {
   return (
     <nav className="navbar">
       <h3>{title}</h3>
       <ul>
         <li>
-          <FaHome />
+          <Link to="/">
+            <FaHome />
+          </Link>
         </li>
         <li>
-          <FaUserCircle />
-        </li>
-        <li>
-          <FaCalendarAlt />
-        </li>
-        <li>
-          <FaStamp />
+          <Link to="/Login">
+            <FaUserCircle />
+          </Link>
         </li>
       </ul>
     </nav>
