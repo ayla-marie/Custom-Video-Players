@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./progress.css";
 import "../../App.css";
-import { FaPlay, FaPause, FaExpand } from "react-icons/fa";
+import { FaPlay, FaPause, FaFastBackward, FaFastForward } from "react-icons/fa";
 
 function Video(props) {
   const { src, title } = props;
-  // const {min, setMin} = useState();
+  const [timedata, setTimedata] = useState({});
+  const [progressbar, setprogressbar] = useState({});
   const [playIt, setPlayIt] = useState();
-  const [size, changeSize] = useState();
   const divRef = React.useRef();
   const progressRef = React.useRef();
   const timestampRef = React.useRef();
@@ -22,23 +22,34 @@ function Video(props) {
     }
   }
 
-  //Fullscreen and ReduceScreen
-  if (size) {
-    console.log("toggle style");
-  }
-
   useEffect(() => {
     //updates the progressbar as % of videotime run
     let thisVideo = divRef.current;
-    let thisProgress = progressRef.current;
-    const interval = setInterval(() => {
-      thisProgress.value = (thisVideo.currentTime / thisVideo.duration) * 100;
+    setInterval(() => {
+      //timestamp function
+      if (timedata) {
+        let thisVideo = divRef.current;
+        var min = Math.floor(thisVideo.currentTime / 60);
+        var sec = Math.floor(thisVideo.currentTime % 60);
+        if (sec < 10) {
+          sec = "0" + String(sec);
+        }
+      }
+      //set value on the progress bar every second
+      if (progressbar) {
+        progressRef.current.value =
+          (thisVideo.currentTime / thisVideo.duration) * 100;
+        var val = progressRef.current.value;
+      }
+      //make object out of min and sec for timestamp
+      setprogressbar({ val });
+      setTimedata({ min, sec });
     }, 1000);
-  });
+  }, [timedata, progressbar]);
 
   return (
     <div className="masterVid">
-      <p val={title}></p>
+      <p>{title}</p>
       <video ref={divRef} src={src} className="vid" allowFullScreen />
       <div className="controls">
         <FaPlay
@@ -55,7 +66,6 @@ function Video(props) {
             setPlayIt(false);
           }}
         />
-        <FaExpand size={20} className="fullScreen" onClick={changeSize} />
         <input
           type="range"
           className="progress"
@@ -63,10 +73,13 @@ function Video(props) {
           min="0"
           max="100"
           step="0.1"
-          value="0"
-          readOnly
+          value={setprogressbar.val}
         />
-        <span ref={timestampRef} className="timestamp"></span>
+        <FaFastBackward className="skip" size={20} />
+        <p ref={timestampRef} data={setTimedata} className="timestamp">
+          {timedata.min}:{timedata.sec}
+        </p>
+        <FaFastForward className="skip" size={20} />
       </div>
     </div>
   );
